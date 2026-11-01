@@ -56,4 +56,8 @@ say('No se pudieron traer los textos: '+m+' Puedes copiarlos a mano en el espaci
 }finally{b.disabled=false}
 }
 
+const tamKey='mi-atalaya-tam';let tam=18;try{tam=Number(localStorage.getItem(tamKey))||18}catch{}
+const aplicaTam=()=>{tam=Math.min(36,Math.max(14,tam));document.documentElement.style.setProperty('--tam',tam+'px');try{localStorage.setItem(tamKey,String(tam))}catch{}};
+$('#tmas').onclick=()=>{tam+=2;aplicaTam()};$('#tmenos').onclick=()=>{tam-=2;aplicaTam()};aplicaTam();
+
 active=data[0]?.id;render();
